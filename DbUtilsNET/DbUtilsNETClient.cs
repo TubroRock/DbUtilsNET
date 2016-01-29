@@ -133,7 +133,7 @@ namespace DbUtilsNET
         }
 
         /// <summary>
-        /// Creates a command for use with transactions - internal stuff mostly, but here for you to play with
+        /// Creates a update command for use with transactions
         /// </summary>
         public virtual DbCommand CreateUpdateCommand(object o, IDictionary<string, Object> things)
         {

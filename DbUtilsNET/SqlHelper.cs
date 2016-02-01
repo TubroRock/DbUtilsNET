@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -93,7 +94,7 @@ namespace DbUtilsNET
             return result;
         }
 
-        public DbDataReader GetReader(DbCommand cmd)
+        public IDataReader ExecuteReader(DbCommand cmd)
         {
             SqlConnection conn = GetConnection();//返回DataReader时,是不可以用using()的
             try

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DbUtilsNET.POCO
+namespace UnitTestDbUtilsNET.POCO
 {
     public class tblFISDataErr
     {
@@ -23,5 +23,10 @@ namespace DbUtilsNET.POCO
         public String dtGetTime { get; set; }
         public String sFISData { get; set; }
         public String sReason { get; set; }
+
+        public override string ToString()
+        {
+            return nNo + "\t" + sFISData + "\t" + dtGetTime + "\t" + sReason + "\r\n";
+        }
     }
 }

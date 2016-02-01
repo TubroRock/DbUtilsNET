@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="POCO\tblFISDataErr.cs" />
     <Compile Include="UnitTestDbUtilsNET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

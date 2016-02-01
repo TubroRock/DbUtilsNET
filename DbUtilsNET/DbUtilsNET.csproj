@@ -39,12 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbDataReaderHandler.cs" />
+    <Compile Include="DataReaderExtensions.cs" />
     <Compile Include="DbUtilsNETClient.cs" />
     <Compile Include="DbUtilsNETTool.cs" />
     <Compile Include="ObjectExtensions.cs" />
-    <Compile Include="POCOListHandler.cs" />
-    <Compile Include="POCO\tblFISDataErr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
   </ItemGroup>

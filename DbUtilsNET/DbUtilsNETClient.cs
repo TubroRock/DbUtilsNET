@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -40,11 +41,10 @@ namespace DbUtilsNET
             return Execute(commands);
         }
 
-        public object Query<T>(String sql, Object[] things)
+        public List<T> Query<T>(String sql, Object[] things) where T : class, new()
         {
-            DbDataReader reader = GetReader(CreateCommand(sql, null, things));
-            POCOListHandler ph = new POCOListHandler(typeof(T));
-            return ph.Handler(reader);
+            IDataReader reader = ExecuteReader(CreateCommand(sql, null, things));
+            return reader.Select<T>();
         }
 
         /// <summary>

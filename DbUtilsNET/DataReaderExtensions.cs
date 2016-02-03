@@ -13,7 +13,7 @@ namespace DbUtilsNET
     /// 不使用DbResult特性的情况下，只有被标记为DbColumn的属性才会被认为是db中的数据列
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    internal sealed class DbResultAttribute : Attribute
+    public sealed class DbResultAttribute : Attribute
     {
         public DbResultAttribute()
             : this(true) { }
@@ -30,7 +30,8 @@ namespace DbUtilsNET
     /// 用来修改属性对应的列名和将该属性排除在数据列
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    internal sealed class DbColumnAttribute : Attribute
+
+    public sealed class DbColumnAttribute : Attribute
     {
         public DbColumnAttribute()
         {

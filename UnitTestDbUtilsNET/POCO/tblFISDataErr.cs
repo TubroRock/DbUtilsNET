@@ -6,15 +6,16 @@ using System.Text;
 
 namespace UnitTestDbUtilsNET.POCO
 {
+    [DbTable("tblFISDataErr")]
     [DbResult]
-    public class tblFISDataErr
+    public class FISDataErr
     {
-        public tblFISDataErr()
+        public FISDataErr()
         {
 
         }
 
-        public tblFISDataErr(String dtGetTime, String sFISData, String sReason)
+        public FISDataErr(String dtGetTime, String sFISData, String sReason)
         {
             this.dtGetTime = dtGetTime;
             this.sFISData = sFISData;

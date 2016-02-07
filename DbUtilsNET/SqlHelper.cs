@@ -51,7 +51,7 @@ namespace DbUtilsNET
         /// <summary>
         /// Creates a command for use with transactions - internal stuff mostly, but here for you to play with
         /// </summary>
-        public virtual DbCommand CreateInsertCommand(object o)
+        public virtual DbCommand CreateInsertCommand(object o, string tbName="")
         {
             DbCommand result = null;
             String tableName = String.Empty;
@@ -76,7 +76,10 @@ namespace DbUtilsNET
                 var keys = sbKeys.ToString().Substring(0, sbKeys.Length - 1);
                 var vals = sbVals.ToString().Substring(0, sbVals.Length - 1);
                 // 构建SQL语句
-                tableName = o.GetType().Name;
+                if (tbName == "")
+                    tableName = o.GetType().Name;
+                else
+                    tableName = tbName;
                 var sql = string.Format(stub, tableName, keys, vals);
                 result.CommandText = sql;
             }
@@ -87,7 +90,7 @@ namespace DbUtilsNET
         /// <summary>
         /// Removes one or more records from the DB according to the passed-in WHERE
         /// </summary>
-        public virtual DbCommand CreateDeleteCommand(object o)
+        public virtual DbCommand CreateDeleteCommand(object o, string tbName="")
         {
             DbCommand result = null;
             String tableName = String.Empty;
@@ -113,7 +116,10 @@ namespace DbUtilsNET
             {
                 // 去掉最后多于的AND
                 var vals = sbVals.Remove(sbVals.Length - 7, 7);
-                tableName = o.GetType().Name;
+                if (tbName == "")
+                    tableName = o.GetType().Name;
+                else
+                    tableName = tbName;
                 result.CommandText = string.Format(stub, tableName, vals);
             }
             else throw new InvalidOperationException("No parsable object was sent in - could not divine any name/value pairs");
@@ -123,7 +129,7 @@ namespace DbUtilsNET
         /// <summary>
         /// Creates a update command for use with transactions
         /// </summary>
-        public virtual DbCommand CreateUpdateCommand(object o, IDictionary<string, Object> things)
+        public virtual DbCommand CreateUpdateCommand(object o, IDictionary<string, Object> things, string tbName="")
         {
             DbCommand result = null;
             String tableName = String.Empty;
@@ -167,7 +173,10 @@ namespace DbUtilsNET
                 var keys = sbKeys.ToString().Substring(0, sbKeys.Length - 4);
                 // 去掉最后多于的AND
                 var vals = sbVals.Remove(sbVals.Length - 7, 7);
-                tableName = o.GetType().Name;
+                if (tbName == "")
+                    tableName = o.GetType().Name;
+                else
+                    tableName = tbName;
                 result.CommandText = string.Format(stub, tableName, keys, vals);
             }
             else throw new InvalidOperationException("No parsable object was sent in - could not divine any name/value pairs");

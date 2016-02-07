@@ -7,6 +7,18 @@ using System.Reflection.Emit;
 namespace DbUtilsNET
 {
     /// <summary>
+    /// 用来修改数据类对应的表名
+    /// </summary>
+    public sealed class DbTableAttribute:Attribute
+    {
+        public DbTableAttribute(string tableName)
+        {
+            TableName = tableName;
+        }
+        public string TableName { get; set; }
+    }
+
+    /// <summary>
     /// 表明类默认为是数据列，或者表明不是默认为是数据列
     /// </summary>
     /// <remarks>
@@ -30,7 +42,6 @@ namespace DbUtilsNET
     /// 用来修改属性对应的列名和将该属性排除在数据列
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-
     public sealed class DbColumnAttribute : Attribute
     {
         public DbColumnAttribute()
